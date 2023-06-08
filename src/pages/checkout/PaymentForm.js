@@ -41,7 +41,7 @@ export default function PaymentForm() {
     if(!error) {
         try {
             const {id} = paymentMethod;
-            const response = await axios.post("http://localhost:9000/payment", {
+            const response = await axios.post("https://forgedfashion-backend.onrender.com/payment", {
                 amount: 1000,
                 id
             });

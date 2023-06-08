@@ -22,7 +22,7 @@ function Login() {
     }
 
     axios
-      .post("http://localhost:9000/profile/login", data)
+      .post("https://forgedfashion-backend.onrender.com/profile/login", data)
       .then((res) => {
         console.log(res.data);
 

@@ -32,7 +32,7 @@ function Cart() {
     useEffect(() => {
         const fetchCartItems = async () => {
             try {
-                const { data } = await axios.get(`http://localhost:9000/cart/${cartId}`);
+                const { data } = await axios.get(`https://forgedfashion-backend.onrender.com/cart/${cartId}`);
                 setCartItems(data.items);
                 let quantity = 0;
                 data.items.forEach(item => {

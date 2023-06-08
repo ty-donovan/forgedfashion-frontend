@@ -23,7 +23,7 @@ function App() {
     const fetchCartItems = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:9000/cart/${cartId}`
+          `https://forgedfashion-backend.onrender.com/cart/${cartId}`
         );
         let quantity = 0;
         data.items.forEach((item) => {

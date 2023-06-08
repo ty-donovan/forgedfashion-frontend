@@ -8,7 +8,7 @@ function Logout() {
     e.preventDefault();
 
     axios
-      .post("http://localhost:9000/profile/logout")
+      .post("https://forgedfashion-backend.onrender.com/profile/logout")
       .then((res) => {
         console.log(res.data);
       })

@@ -29,7 +29,7 @@ function SignUp() {
     };
 
     axios
-      .post("http://localhost:9000/profile/sign-up", data)
+      .post("https://forgedfashion-backend.onrender.com/profile/sign-up", data)
       .then((res) => {
         console.log(res.data);
 
