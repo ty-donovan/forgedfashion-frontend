@@ -3,9 +3,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import "./Checkout.css";
 
-const appearance = {
-    theme: 'stripe'
-  };
+// const appearance = {
+//     theme: 'stripe'
+//   };
 const CARD_OPTIONS = {
 	iconStyle: "solid",
 	style: {
