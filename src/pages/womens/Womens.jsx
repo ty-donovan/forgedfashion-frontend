@@ -23,19 +23,19 @@ export default function Mens() {
   };
 
   const getWomensDresses = () => {
-    axios.get("http://localhost:9000/product/womens/dresses").then((result) => {
+    axios.get("https://forgedfashion-backend.onrender.com/product/womens/dresses").then((result) => {
       setWomensDresses(result.data.products);
     });
   };
 
   const getWomensShoes = () => {
-    axios.get("http://localhost:9000/product/womens/shoes").then((result) => {
+    axios.get("https://forgedfashion-backend.onrender.com/product/womens/shoes").then((result) => {
       setWomensShoes(result.data.products);
     });
   };
 
   const getWomensWatches = () => {
-    axios.get("http://localhost:9000/product/womens/watches").then((result) => {
+    axios.get("https://forgedfashion-backend.onrender.com/product/womens/watches").then((result) => {
       setWomensWatches(result.data.products);
     });
   };
