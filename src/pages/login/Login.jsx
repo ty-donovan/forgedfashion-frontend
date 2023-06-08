@@ -1,11 +1,13 @@
 import React from "react";
 import "./Login.css";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import CookiePopUp from "../sign-up/components/CookiePopUp";
 
 function Login() {
+  const navigate = useNavigate();
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -24,7 +26,6 @@ function Login() {
     axios
       .post("https://forgedfashion-backend.onrender.com/profile/login", data)
       .then((res) => {
-        console.log(res.data);
 
         if (Cookies.get("cookieConsent")) {
           Cookies.set("uid", res.data, { expires: 365 });
@@ -33,6 +34,8 @@ function Login() {
         }
 
         form.reset();
+
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
