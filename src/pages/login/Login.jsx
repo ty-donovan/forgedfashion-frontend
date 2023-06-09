@@ -21,7 +21,7 @@ function Login() {
     if (data.email === "" || data.password === "") {
       alert("Please fill all the fields");
       return;
-    }
+    } 
 
     axios
       .post("https://forgedfashion-backend.onrender.com/profile/login", data)
@@ -39,6 +39,7 @@ function Login() {
       })
       .catch((err) => {
         console.log(err);
+        alert("Invalid email or password");
       });
   };
 

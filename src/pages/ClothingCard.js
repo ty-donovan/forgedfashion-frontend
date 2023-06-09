@@ -33,30 +33,41 @@ export default function ClothingCard(props) {
     vertical: "top",
     horizontal: "right",
   });
+  const [stateErrNotSignedIn, setStateErrNotSignedIn] = useState({
+    openErrNotSignedIn: false,
+    vertical: "top",
+    horizontal: "right",
+  });
   const { vertical, horizontal, open } = state;
   const { openErr } = stateErr;
+  const { openErrNotSignedIn } = stateErrNotSignedIn;
 
   const handleClick = (newState) => () => {
-    if (size != null) {
+    if (props.userUID === undefined) {
+      console.log("not signed in");
+      setStateErrNotSignedIn({ openErrNotSignedIn: true, ...newState });
+    } else if (size != null) {
       setState({ open: true, ...newState });
       addToCart();
       setSize(null);
     } else {
-      console.log("size is null");
       setStateErr({ openErr: true, ...newState });
     }
   };
 
   const addToCart = () => {
     let url = "https://forgedfashion-backend.onrender.com/product/add-to-cart/" + props.userUID;
-    axios.put(url, {
-      id: props.id.toString(),
-      name: props.title,
-      price: props.price,
-      size: size,
-      quantity: 1,
-      url: props.thumbnail,
-    });
+    console.log(url);
+    axios
+      .put(url, {
+        id: props.id.toString(),
+        name: props.title,
+        price: props.price,
+        size: size,
+        quantity: 1,
+        url: props.thumbnail,
+      })
+      .then((result) => console.log(result));
   };
 
   const handleClose = () => {
@@ -185,6 +196,17 @@ export default function ClothingCard(props) {
       >
         <Alert severity="error">
           Please select a size before adding to cart.
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={openErrNotSignedIn}
+        autoHideDuration={3300}
+        onClose={handleClose}
+        key={vertical + horizontal}
+      >
+        <Alert severity="error">
+          Please sign in before attempting to add to the cart.
         </Alert>
       </Snackbar>
     </>

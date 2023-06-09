@@ -49,7 +49,7 @@ function Cart() {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://localhost:9000/cart/${cartId}/${itemToDelete.id}/${itemToDelete.size}`);
+            await axios.delete(`https://forgedfashion-backend.onrender.com/cart/${cartId}/${itemToDelete.id}/${itemToDelete.size}`);
             setCartItems(cartItems.filter(item => !(item.id === itemToDelete.id && item.size === itemToDelete.size)));
             let quantity = 0;
             cartItems.forEach(item => {
@@ -79,7 +79,7 @@ function Cart() {
     const updateQuantity = async (itemId, itemSize, newQuantity) => {
         if (newQuantity >= 0) {
             try {
-                const { data } = await axios.patch(`http://localhost:9000/cart/${cartId}/${itemId}/${itemSize}`, { quantity: newQuantity });
+                const { data } = await axios.patch(`https://forgedfashion-backend.onrender.com/cart/${cartId}/${itemId}/${itemSize}`, { quantity: newQuantity });
                 const updatedCartItems = cartItems.map(item => (item.id === itemId && item.size === itemSize) ? data : item);
                 setCartItems(updatedCartItems);
                 let quantity = 0;

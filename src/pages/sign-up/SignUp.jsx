@@ -33,7 +33,6 @@ function SignUp() {
     axios
       .post("https://forgedfashion-backend.onrender.com/profile/sign-up", data)
       .then((res) => {
-
         if (Cookies.get("cookieConsent")) {
           Cookies.set("uid", res.data, { expires: 365 });
         } else {
@@ -41,6 +40,10 @@ function SignUp() {
         }
 
         form.reset();
+
+        let url = "https://forgedfashion-backend.onrender.com/product/add-cart/" + res.data;
+        console.log(url);
+        axios.put(url).then((result) => console.log(result));
 
         navigate("/");
       })
